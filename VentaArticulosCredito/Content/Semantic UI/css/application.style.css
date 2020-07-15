@@ -1,0 +1,151 @@
+﻿body {
+    background-color: #DADADA;
+}
+
+#live_message_badge_main_header {
+    padding: 2px 3px;
+    top: 10px;
+    left: 47px;
+}
+
+#lista-categorias{
+    margin-left: 3%;
+}
+
+#contenedor-principal{
+    margin-top: 1%;
+}
+
+#left-arrow-slide {
+    background-color: #acacb7b8;
+    margin-left: -8%;
+}
+
+#right-arrow-slide {
+    background-color: #acacb7b8;
+    margin-right: -8%;
+}
+
+#search-input-menu {
+    padding-left: 30%;
+    width: 56%;
+}
+
+#mensaje-sin-coincidencias{
+    display: none;
+}
+
+#limpiar-filtro {
+    margin-left: 2%;
+    max-height: 45px;
+}
+
+.fotos.articulo {
+    max-height: 521px;
+    max-width: 521px;
+    min-height: 521px;
+    min-width: 521px;
+}
+
+.descripcion.articulo {
+    overflow: auto;
+    max-height: 521px;
+    max-width: 521px;
+}
+
+.cantidad.input {
+    width: 50%;
+}
+
+.container.eliminar.articulo.carrito {
+    margin-top: 4%; 
+}
+
+.tabla.checkout.carrito{
+    text-align: center;
+}
+
+.tarjeta.direccion {
+    max-height: 156px;
+    min-height: 156px;
+    overflow: auto;
+}
+
+.contenedor.orden.compra {
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+.contenedor.ordenes.compra {
+    margin-left: -15%;
+    margin-right: -15%;
+}
+
+.fila.orden.compra{
+    cursor: pointer;
+}
+
+.estado.orden{
+    display: none;
+}
+
+.fila.orden.compra.cero {
+    background-color: #d5dae0;
+}
+
+.fila.orden.compra.uno {
+    background-color: #bbe2f5;
+}
+
+.fila.orden.compra.dos {
+    background-color: #f5dbbb;
+}
+
+.fila.orden.compra.tres {
+    background-color: #bff5bb;
+}
+
+.fila.orden.compra.cuatro {
+    background-color: #f5bbbb;
+}
+
+.contador.articulos.orden {
+    min-width: 1em;
+    min-height: 1em;
+}
+
+.columna.informacion{
+    text-align: center;
+}
+
+.contenedor.perfil {
+    margin-left: -15%;
+    margin-right: -15%;
+}
+
+.contenedor.informacion.usuario {
+    display: table-footer-group;
+}
+
+.tarjeta.perfil {
+    max-height: 156px;
+    min-height: 156px;
+    overflow: auto;
+}
+
+.tarjeta.escondida {
+    visibility: hidden;
+}
+
+.fila.articulo.admin {
+    cursor: pointer;
+}
+
+.ui.action.input input[type="file"] {
+    display: none;
+}
+
+.contenedor.articulos.admin {
+    margin-left: -15%;
+    margin-right: -15%;
+}

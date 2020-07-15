@@ -1,0 +1,67 @@
+﻿@model VentaArticulosCredito.Models.Inicio.InicioPageModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Contenedor de todo -->
+<div class="ui grid" id="contenedor-principal">
+    <div class="two wide column" id="lista-categorias">
+        <!-- Lista de categorias y subcategorias -->
+        <div class="ui vertical menu">
+            @foreach (var c in Model.categorias)
+            {
+                <div class="item">
+                    <div class="header">@c.nombre</div>
+                    <div class="menu">
+                        @foreach (var sc in c.SubCategoria)
+                        {
+                            <a class="item filter-subcategorie" data-filter="@sc.codigo">@sc.nombre</a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- Contenedor principal -->
+    <div class="thirteen wide stretched column">
+        <!-- Mensaje 0 coincidencias -->
+        <div class="ui icon message" id="mensaje-sin-coincidencias">
+            <i class="exclamation circle icon"></i>
+            <div class="content">
+                <div class="header">
+                    0 Coincidencias
+                </div>
+                <p>No hemos encontrado artículos con este filtro.</p>
+            </div>
+        </div>
+        <!-- Articulos -->
+        <div class="ui three column grid">
+            @foreach (var a in Model.articulos)
+            {
+                <div class="four wide column" data-subCategorie="@a.Articulo.SubCategoria.codigo">
+                    <div class="ui segment">
+                        <img class="ui centered medium image" src="~/Content/Images/@a.Articulo.Imagen_Articulo.FirstOrDefault().imagen" />
+                        <h2 class="ui centered small header">@a.Articulo.nombre</h2>
+                        <div class="description">
+                            <div class="ui list">
+                                <div class="item">GTQ @a.precioVenta (IVA incluido)</div>
+                                <div class="item">Aun hay @a.cantidad disponibles</div>
+                            </div>
+                            <div class="fluid ui animated fade red button show more button" data-inventario="@a.correlativo">
+                                <div class="visible content"><i class="plus icon"></i></div>
+                                <div class="hidden content">
+                                    Ver más
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             }
+        </div>
+    </div>
+
+    <!-- Ventna modal del articulo -->
+    <div class="ui large modal" id="articulo-modal-view">
+        
+    </div>
+</div>
+

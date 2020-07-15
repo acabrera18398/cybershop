@@ -1,0 +1,113 @@
+﻿@model VentaArticulosCredito.Models.Compras.ComprasPageModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="ui container">
+    <div class="ui segment  contenedor ordenes compra">
+        <!-- Encabezado -->
+        <h2 class="ui centered header">Ordenes de compra</h2>
+        <!-- Tabla ordenes -->
+        <table class="ui selectable celled center aligned table" id="tabla-ordenes-compra">
+            <thead>
+                <tr>
+                    <th># Orden</th>
+                    <th>Fecha Orden</th>
+                    <th>Fecha Entrega</th>
+                    <th>Dirección Entrega</th>
+                    <th># Artículos</th>
+                    <th>Monto</th>
+                    <th>Impuestos</th>
+                    <th>Envío</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var c in Model.compras){
+                    double totalArticulos = 0.00;
+                    double impuestos = 0.00;
+                    double envio = 0.00;
+                    double totalOrden = 0.00;
+                    string clase = "";
+
+                    foreach (var d in c.DetalleFactura)
+                    {
+                        totalArticulos += Convert.ToDouble((d.cantidad * d.precio));
+                    }
+
+                    impuestos = (totalArticulos * 0.12);
+
+                    totalArticulos -= impuestos;
+
+                    if (totalArticulos < 250.00)
+                    {
+                        envio = 120.00;
+                    }
+
+                    totalOrden = (totalArticulos + envio + impuestos);
+
+                    if(c.estado == 0){
+                        clase = "cero";
+                    }else if (c.estado == 1) {
+                        clase = "uno";
+                    }else if (c.estado == 2) {
+                        clase = "dos";
+                    }
+                    else if (c.estado == 3)
+                    {
+                        clase = "tres";
+                    }
+                    else if (c.estado == 4)
+                    {
+                        clase = "cuatro";
+                    }
+
+                    <tr class="fila orden compra @clase" data-orden-compra="@c.codigo">
+                        <td>@c.codigo</td>
+                        <td>@Convert.ToDateTime(c.fecha).ToString("dd/MM/yyyy")</td>
+                        @if (c.fechaEntrega != null) {
+                            <td>@c.fechaEntrega</td>
+                        }
+                        else {
+                            <td>NA</td>
+                        }
+                        <td>@c.Direccion_Usuario.direccion</td>
+                        <td>
+                            <div class="ui accordion">
+                                <div class="title active">
+                                    <i class="dropdown icon"></i>
+                                    <div class="ui orange circular label contador articulos orden">
+                                        @c.DetalleFactura.Count
+                                    </div>
+                                </div>
+                                <div class="content active">
+                                    @foreach (var ar in c.DetalleFactura)
+                                    {
+                                        <p class="transition visible" style="display: block !important;">@ar.Articulo.nombre</p>
+                                    }
+                                </div>
+                            </div>
+                        </td>
+                        <td>GTQ @totalOrden</td>
+                        <td>GTQ @impuestos</td>
+                        <td>GTQ @envio</td>
+                        @if (c.estado == 0)
+                        {
+                            <td data-tooltip="Orden pendiente de validar" data-position="top center" data-inverted=""><span class="estado orden">pendiente</span><i class="x icon"></i></td>
+                        }
+                        else if (c.estado == 1) {
+                            <td data-tooltip="Orden validada pendiente de enviar" data-position="top center" data-inverted=""><span class="estado orden">validada</span><i class="check icon"></i></td>
+                        }else if (c.estado == 2) {
+                            <td data-tooltip="Orden enviada pendiente de entrega" data-position="top center" data-inverted=""><span class="estado orden">enviada</span><i class="truck icon"></i></td>
+                        }else if (c.estado == 3)
+                        {
+                            <td data-tooltip="Orde entregada y pagada" data-position="top center" data-inverted=""><span class="estado orden">entregada</span><i class="money bill alternate outline icon"></i></td>
+                        }else if (c.estado == 4)
+                        {
+                            <td data-tooltip="Orden cancelada" data-position="top center" data-inverted=""><span class="estado orden">cancelada</span><i class="ban icon"></i></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

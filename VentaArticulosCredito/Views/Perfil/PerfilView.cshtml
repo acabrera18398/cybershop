@@ -1,0 +1,272 @@
+﻿@model VentaArticulosCredito.Models.Perfil.PerfilPageModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="ui container">
+    <div class="ui segment contenedor perfil">
+        <div class="ui two column stackable grid container contenedor informacion usuario">
+            <!-- Columna información usuario -->
+            <div class="column">
+                <h2 class="ui centered header">Información Usuario</h2>
+                <div class="ui fluid centered link card">
+                    <div class="content">
+                        <div class="ui two column stackable grid container">
+                            <div class="column columna informacion">
+                                <div class="item"><strong>Correo:</strong></div>
+                                <div class="item"><strong>Nombre:</strong></div>
+                                <div class="item"><strong>Apellido:</strong></div>
+                                <div class="item"><strong>Fecha Nacimiento:</strong></div>
+                                <div class="item"><strong>Nit:</strong></div>
+                            </div>
+                            <div class="column columna informacion">
+                                <div class="item">@Model.usuario.correo</div>
+                                <div class="item">@Model.usuario.nombre</div>
+                                <div class="item">@Model.usuario.apellido</div>
+                                <div class="item">@Convert.ToDateTime(Model.usuario.fechaNacimiento).ToString("dd/MM/yyyy")</div>
+                                <div class="item">@Model.usuario.nit</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <div class="fluid ui animated fade yellow button" id="btn-show-update-info">
+                        <div class="visible content"><i class="address card icon"></i></div>
+                        <div class="hidden content">
+                            Actualizar información
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    <div class="fluid ui animated fade green button" id="btn-show-change-password">
+                        <div class="visible content"><i class="lock icon"></i></div>
+                        <div class="hidden content">
+                            Cambiar contraseña
+                        </div>
+                    </div>
+                </p>
+            </div>
+            <!-- Columna direcciones -->
+            <div class="column">
+                <h2 class="ui centered header">Direcciones Usuario</h2>
+                <div class="ui segment">
+                        @if (Model.usuario.Direccion_Usuario.Count == 0)
+                        {
+                            <div class="fluid ui segment icon message">
+                                <i class="exclamation circle icon"></i>
+                                <div class="content">
+                                    <div class="header">
+                                        0 Direcciones
+                                    </div>
+                                    <p>Agregue al menos una dirección para poder comprar.</p>
+                                </div>
+                            </div>
+                        }
+                    <div class="ui two column stackable grid container contenedor informacion usuario">
+                        @foreach (var dir in Model.usuario.Direccion_Usuario)
+                        {
+                            <div class="column">
+                                <div class="ui raised centered link card tarjeta direccion" data-departamento="@dir.Municipio.Departamento.codigo" data-municipio="@dir.Municipio.codigo" data-direccion="@dir.codigo">
+                                    <div class="scrolling content">
+                                        <div class="ui list">
+                                            <div class="header"><strong>@dir.nombre @dir.apellido</strong></div>
+                                            <div class="ui divider"></div>
+                                            <div class="item">@dir.direccion</div>
+                                            <div class="item">@dir.Municipio.nombre, @dir.Municipio.Departamento.nombre</div>
+                                            <div class="item">@dir.telefono</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (Model.usuario.Direccion_Usuario.Count == 1) {
+                            <div class="column">
+                                <div class="ui raised centered link card tarjeta escondida">
+                                    <div class="scrolling content">
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <p>
+                        <div class="fluid ui animated fade blue button" id="btn-show-add-direction">
+                            <div class="visible content"><i class="plus icon"></i></div>
+                            <div class="hidden content">
+                                Agregar dirección
+                            </div>
+                        </div>
+                    </p>
+                    @if(Model.usuario.Direccion_Usuario.Count > 0)
+                    {
+                        <p>
+                            <div class="fluid ui animated fade large orange submit button" id="boton-editar-direccion">
+                                <div class="visible content"><i class="pencil icon"></i></div>
+                                <div class="hidden content">
+                                    Editar
+                                </div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="fluid ui animated fade large red submit button" id="boton-eliminar-direccion">
+                                <div class="visible content"><i class="trash icon"></i></div>
+                                <div class="hidden content">
+                                    Eliminar
+                                </div>
+                            </div>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ventana modal para actualizar información -->
+<div class="ui tiny modal" id="update-info-modal">
+    <!-- Título-->
+    <div class="header">Actualizar Información</div>
+    <!-- Contenido -->
+    <div class="content">
+        @using (Html.BeginForm("UpdateInfo", "Perfil", FormMethod.Post, new { @ID = "update-info-form", @NAME = "update-info-form", @CLASS = "ui large form" }))
+        {
+            <div class="ui stacked segment">
+                @Html.AntiForgeryToken()
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        @Html.EditorFor(m => m.updateModel.email, new { htmlAttributes = new { @NAME = "email", @PLACEHOLDER = "Correo", @VALUE = Model.usuario.correo } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        @Html.EditorFor(m => m.updateModel.nombre, new { htmlAttributes = new { @NAME = "nombre", @PLACEHOLDER = "Nombre", @VALUE = Model.usuario.nombre } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        @Html.EditorFor(m => m.updateModel.apellido, new { htmlAttributes = new { @NAME = "apellido", @PLACEHOLDER = "Apellido", @VALUE = Model.usuario.apellido } })
+                    </div>
+                </div>
+                <div class="ui calendar field" id="calendar-update-info">
+                    <div class="ui left icon input">
+                        <i class="calendar alternate icon"></i>
+                        @Html.EditorFor(m => m.updateModel.fechaNacimiento, new { htmlAttributes = new { @NAME = "fechaNacimiento", @PLACEHOLDER = "Fecha Nacimiento", @VALUE = Model.usuario.fechaNacimiento } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="address card icon"></i>
+                        @Html.EditorFor(m => m.updateModel.nit, new { htmlAttributes = new { @NAME = "nit", @PLACEHOLDER = "NIT", @VALUE = Model.usuario.nit } })
+                    </div>
+                </div>
+                <button class="fluid ui animated fade large orange submit button boton update">
+                    <div class="visible content"><i class="check icon"></i></div>
+                    <div class="hidden content">
+                        Actualizar
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Ventana modal para cambiar contraseña -->
+<div class="ui tiny modal" id="change-password-modal">
+    <!-- Título-->
+    <div class="header">Cambiar Contraseña</div>
+    <!-- Contenido -->
+    <div class="content">
+        @using (Html.BeginForm("ChangePassword", "Perfil", FormMethod.Post, new { @ID = "change-password-form", @NAME = "change-password-form", @CLASS = "ui large form" }))
+        {
+            <div class="ui stacked segment">
+                @Html.AntiForgeryToken()
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        @Html.EditorFor(m => m.changeModel.passwordActual, new { htmlAttributes = new { @NAME = "passwordActual", @PLACEHOLDER = "Contraseña Actual" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        @Html.EditorFor(m => m.changeModel.newPassword, new { htmlAttributes = new { @NAME = "newPassword", @PLACEHOLDER = "Contraseña Nueva" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        @Html.EditorFor(m => m.changeModel.confirmPassword, new { htmlAttributes = new { @NAME = "confirmPassword", @PLACEHOLDER = "Confirmar Contraseña" } })
+                    </div>
+                </div>
+                <button class="fluid ui animated fade large orange submit button boton change">
+                    <div class="visible content"><i class="check icon"></i></div>
+                    <div class="hidden content">
+                        Cambiar
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Ventana modal para agregar dirección -->
+<div class="ui tiny modal" id="add-direction-modal">
+    <!-- Título-->
+    <div class="header">Agregar Dirección</div>
+    <!-- Contenido -->
+    <div class="content">
+        @using (Html.BeginForm("CreateDirection", "Perfil", FormMethod.Post, new { @ID = "create-direction-form", @NAME = "create-direction-form", @CLASS = "ui large form" }))
+        {
+            <div class="ui stacked segment">
+                @Html.AntiForgeryToken()
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        @Html.EditorFor(m => m.directionModel.nombre, new { htmlAttributes = new { @NAME = "nombre", @PLACEHOLDER = "Nombre" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        @Html.EditorFor(m => m.directionModel.apellido, new { htmlAttributes = new { @NAME = "apellido", @PLACEHOLDER = "Apellido" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="address card icon"></i>
+                        @Html.EditorFor(m => m.directionModel.direccion, new { htmlAttributes = new { @NAME = "direccion", @PLACEHOLDER = "Dirección" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="phone icon"></i>
+                        @Html.EditorFor(m => m.directionModel.telefono, new { htmlAttributes = new { @NAME = "telefono", @PLACEHOLDER = "Teléfono" } })
+                    </div>
+                </div>
+                <div class="field">
+                     @Html.DropDownListFor(m => m.directionModel.departamento, new SelectList(ViewBag.ListaDepartamentos, "codigo", "nombre"), "Departamento", new { @CLASS = "ui search dropdown", @NAME = "departamento", @ID = "lista-departamentos" })
+                </div>
+                <div class="field">
+                    <select class="ui search dropdown" id="lista-municipios" name="municipio">
+
+                    </select>
+                </div>
+                <button class="fluid ui animated fade large orange submit button boton crear direccion">
+                    <div class="visible content"><i class="check icon"></i></div>
+                    <div class="hidden content">
+                        Agregar
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Ventana modal para editar dirección -->
+<div class="ui tiny modal" id="edit-direction-modal">
+    @Html.Partial("~/Views/Perfil/EditDirectionPartialView.cshtml")
+</div>
+

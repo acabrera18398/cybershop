@@ -1,0 +1,52 @@
+﻿@model VentaArticulosCredito.Models.Perfil.PerfilPageModel
+@if (Model.direccion != null)
+{
+    <!-- Título-->
+    <div class="header">Editar Dirección</div>
+    <!-- Contenido -->
+    <div class="content">
+        @using (Html.BeginForm("EditDirection", "Perfil", FormMethod.Post, new { @ID = "edit-direction-form", @NAME = "edit-direction-form", @CLASS = "ui large form" }))
+        {
+            <div class="ui stacked segment">
+                @Html.AntiForgeryToken()
+                <input type="hidden" value="@Model.direccion.codigo" name="codigo" />
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        @Html.EditorFor(m => m.directionModel.nombre, new { htmlAttributes = new { @NAME = "nombre", @PLACEHOLDER = "Nombre", @VALUE = Model.direccion.nombre } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        @Html.EditorFor(m => m.directionModel.apellido, new { htmlAttributes = new { @NAME = "apellido", @PLACEHOLDER = "Apellido", @VALUE = Model.direccion.apellido } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="address card icon"></i>
+                        @Html.EditorFor(m => m.directionModel.direccion, new { htmlAttributes = new { @NAME = "direccion", @PLACEHOLDER = "Dirección", @VALUE = Model.direccion.direccion } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="phone icon"></i>
+                        @Html.EditorFor(m => m.directionModel.telefono, new { htmlAttributes = new { @NAME = "telefono", @PLACEHOLDER = "Teléfono", @VALUE = Model.direccion.telefono } })
+                    </div>
+                </div>
+                <div class="field">
+                    @Html.DropDownListFor(m => m.directionModel.departamento, new SelectList(ViewBag.ListaDepartamentos, "codigo", "nombre"), "Departamento", new { @CLASS = "ui search dropdown", @NAME = "departamento", @ID = "lista-departamentos-edit", @DEPARTAMENTO = Model.direccion.Municipio.Departamento.codigo })
+                </div>
+                <div class="field">
+                    @Html.DropDownListFor(m => m.directionModel.municipio, new SelectList(ViewBag.ListaMunicipios, "codigo", "nombre"), "Municipio", new { @CLASS = "ui search dropdown", @NAME = "municipio", @ID = "lista-municipios-edit", @MUNICIPIO = Model.direccion.Municipio.codigo })
+                </div>
+                <button class="fluid ui animated fade large orange submit button boton editar direccion" data-direccion="@Model.direccion.codigo">
+                    <div class="visible content"><i class="check icon"></i></div>
+                    <div class="hidden content">
+                        Modificar
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+}

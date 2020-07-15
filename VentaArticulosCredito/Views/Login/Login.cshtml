@@ -1,0 +1,153 @@
+﻿@model VentaArticulosCredito.Models.Login.LoginPageModel
+@using System.Web.Optimization;
+@{
+    //Evita que podamos regresar a la página anterior.
+    Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+    Response.Cache.SetAllowResponseInBrowserHistory(false);
+    Response.Cache.SetNoStore();
+
+    //Devuelve la ruta de la aplicacion
+    String contentRoot = Url.Content("~/");
+    String ApplicationRoot = Request.Url.Scheme + "://" + Request.Url.Authority + contentRoot.Substring(0, contentRoot.Length - 1);
+}
+<!DOCTYPE html>
+<html data-root="@ApplicationRoot">
+    <head>
+        <!-- Medadata -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Icono -->
+        <link rel="shortcut icon" href="~/Content/Semantic UI/css/themes/default/assets/images/icon.jpg" />
+        <!-- Título -->
+        <title>Cyber Shop</title>
+        <!-- Estilos -->
+        @Styles.Render("~/Login/Style")
+        <!-- Scripts -->
+        @Scripts.Render("~/Login/Script")
+    </head>
+    <body>
+        <!-- Login -->
+        <div class="ui middle aligned center aligned grid animated bounceInDown" id="login-container">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <img src="~/Content/Semantic UI/css/themes/default/assets/images/icon.jpg" class="ui avatar image">
+                    <div class="content title-login">
+                        Cyber Shop
+                    </div>
+                </h2>
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @ID = "login-form", @NAME = "login-form", @CLASS = "ui large form" }))
+                {
+                    <div class="ui stacked segment">
+                        @Html.AntiForgeryToken()
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                @Html.EditorFor(m => m.loginModel.email, new { htmlAttributes = new { @NAME = "email", @PLACEHOLDER = "Correo" } })
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                @Html.EditorFor(m => m.loginModel.password, new { htmlAttributes = new { @NAME = "password", @PLACEHOLDER = "Contraseña" } })
+                            </div>
+                        </div>
+                        <button class="ui fluid large teal submit button ladda-button" id="button-login" data-style="zoom-out"><span class="ladda-label">Ingresar</span></button>
+                    </div>
+                }
+                <div class="ui message">
+                    <a id="show-forgot-password">Olvide mi contraseña</a>
+                </div>
+                <div class="ui message">
+                    <a id="show-register-form">Registrarse</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registro -->
+        <div class="ui middle aligned center aligned grid animated flipInY" id="register-container">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <img src="~/Content/Semantic UI/css/themes/default/assets/images/icon.jpg" class="ui avatar image">
+                    <div class="content title-login">
+                        Cyber Shop
+                    </div>
+                </h2>
+                @using (Html.BeginForm("Login", "Register", FormMethod.Post, new { @ID = "register-form", @NAME = "register-form", @CLASS = "ui large form" }))
+                {
+                    <div class="ui stacked segment">
+                        @Html.AntiForgeryToken()
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                @Html.EditorFor(m => m.registerModel.email, new { htmlAttributes = new { @NAME = "email", @PLACEHOLDER = "Correo" } })
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                @Html.EditorFor(m => m.registerModel.password, new { htmlAttributes = new { @NAME = "password", @PLACEHOLDER = "Contraseña" } })
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                @Html.EditorFor(m => m.registerModel.confirmPassword, new { htmlAttributes = new { @NAME = "confirmPassword", @PLACEHOLDER = "Confirmar Contraseña" } })
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                @Html.EditorFor(m => m.registerModel.nombre, new { htmlAttributes = new { @NAME = "nombre", @PLACEHOLDER = "Nombre" } })
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                @Html.EditorFor(m => m.registerModel.apellido, new { htmlAttributes = new { @NAME = "apellido", @PLACEHOLDER = "Apellido" } })
+                            </div>
+                        </div>
+                        <div class="ui calendar field" id="calendar-register">
+                            <div class="ui left icon input">
+                                <i class="calendar alternate icon"></i>
+                                @Html.EditorFor(m => m.registerModel.fechaNacimiento, new { htmlAttributes = new { @NAME = "fechaNacimiento", @PLACEHOLDER = "Fecha Nacimiento" } })
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="address card icon"></i>
+                                @Html.EditorFor(m => m.registerModel.nit, new { htmlAttributes = new { @NAME = "nit", @PLACEHOLDER = "NIT" } })
+                            </div>
+                        </div>
+                        <p>
+                            <button class="ui fluid large teal submit button ladda-button" id="register-button" data-style="zoom-out"><span class="ladda-label">Registrar</span></button>
+                        </p>
+                        <p>
+                            <span class="ui fluid large teal submit button" id="cancel-register-button">Cancelar</span>
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+            
+        <!-- Ventana modal para restaurar contraseña-->
+        <div class="ui mini modal" id="reset-password-modal">
+            <div class="header">Restaurar Contraseña</div>
+                <div class="content">
+                    @using (Html.BeginForm("Login", "ForgotPassword", FormMethod.Post, new { @ID = "forgot-password-form", @NAME = "forgot-password-form", @CLASS = "ui large form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                @Html.EditorFor(m => m.resetPasswordModel.email, new { htmlAttributes = new { @NAME = "email", @PLACEHOLDER = "Correo" } })
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="actions">
+                    <button class="ui green submit button ladda-button" id="button-forgot-password" data-style="zoom-out"><span class="ladda-label">Enviar</span></button>
+                    <span class="ui red cancel button" id="cancel-forgot-password-button">Cancelar</span>
+                </div>
+        </div>
+    </body>
+</html>

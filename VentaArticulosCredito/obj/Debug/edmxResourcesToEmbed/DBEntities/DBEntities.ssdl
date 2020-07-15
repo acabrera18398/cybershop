@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VentaArticulosCreditoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Articulo">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" />
+    <Property Name="codigoSubCategoria" Type="int" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Carrito">
+    <Key>
+      <PropertyRef Name="correlativo" />
+    </Key>
+    <Property Name="correlativo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoUsuario" Type="int" />
+    <Property Name="codigoInventario" Type="int" />
+    <Property Name="cantidad" Type="int" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CorrelativoFactura">
+    <Key>
+      <PropertyRef Name="correlativo" />
+      <PropertyRef Name="codigoFactura" />
+    </Key>
+    <Property Name="correlativo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoFactura" Type="nvarchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Descuento_Articulo">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="porcentaje" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="codigoInventario" Type="int" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="DetalleFactura">
+    <Key>
+      <PropertyRef Name="posicion" />
+      <PropertyRef Name="codigoFactura" />
+    </Key>
+    <Property Name="posicion" Type="int" Nullable="false" />
+    <Property Name="codigoFactura" Type="int" Nullable="false" />
+    <Property Name="precio" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="cantidad" Type="int" />
+    <Property Name="codigoArticulo" Type="int" />
+  </EntityType>
+  <EntityType Name="Direccion_Usuario">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoUsuario" Type="int" />
+    <Property Name="telefono" Type="int" />
+    <Property Name="direccion" Type="nvarchar(max)" />
+    <Property Name="codigoMunicipio" Type="int" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="codigoUsuario" Type="int" />
+    <Property Name="estado" Type="int" />
+    <Property Name="direccionEntrega" Type="int" />
+    <Property Name="fechaEntrega" Type="date" />
+  </EntityType>
+  <EntityType Name="Imagen_Articulo">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoArticulo" Type="int" />
+    <Property Name="imagen" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Inventario">
+    <Key>
+      <PropertyRef Name="correlativo" />
+    </Key>
+    <Property Name="correlativo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoArticulo" Type="int" />
+    <Property Name="precioCompra" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="precioVenta" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="cantidad" Type="int" />
+    <Property Name="fechaCompra" Type="date" />
+  </EntityType>
+  <EntityType Name="Municipio">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoDepartamento" Type="int" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="15" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SubCategoria">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoCategoria" Type="int" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="correo" Type="nvarchar" MaxLength="80" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="fechaNacimiento" Type="date" />
+    <Property Name="nit" Type="nvarchar" MaxLength="15" />
+    <Property Name="codigoRol" Type="int" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <Association Name="FK_Articulo_SubCategoria">
+    <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="0..1" />
+    <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategoria">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Articulo">
+        <PropertyRef Name="codigoSubCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carrito_Inventario">
+    <End Role="Inventario" Type="Self.Inventario" Multiplicity="0..1" />
+    <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventario">
+        <PropertyRef Name="correlativo" />
+      </Principal>
+      <Dependent Role="Carrito">
+        <PropertyRef Name="codigoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carrito_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Carrito">
+        <PropertyRef Name="codigoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Descuento_Articulo_Inventario">
+    <End Role="Inventario" Type="Self.Inventario" Multiplicity="0..1" />
+    <End Role="Descuento_Articulo" Type="Self.Descuento_Articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventario">
+        <PropertyRef Name="correlativo" />
+      </Principal>
+      <Dependent Role="Descuento_Articulo">
+        <PropertyRef Name="codigoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleFactura_Articulo">
+    <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+    <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulo">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="DetalleFactura">
+        <PropertyRef Name="codigoArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleFactura_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="DetalleFactura">
+        <PropertyRef Name="codigoFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Usuario_Municipio">
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+    <End Role="Direccion_Usuario" Type="Self.Direccion_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipio">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Direccion_Usuario">
+        <PropertyRef Name="codigoMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Usuario_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Direccion_Usuario" Type="Self.Direccion_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Direccion_Usuario">
+        <PropertyRef Name="codigoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Direccion_Usuario">
+    <End Role="Direccion_Usuario" Type="Self.Direccion_Usuario" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direccion_Usuario">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="direccionEntrega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Imagen_Articulo_Articulo">
+    <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+    <End Role="Imagen_Articulo" Type="Self.Imagen_Articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulo">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Imagen_Articulo">
+        <PropertyRef Name="codigoArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inventario_Articulo">
+    <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+    <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulo">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Inventario">
+        <PropertyRef Name="codigoArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Municipio_Departamento">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="codigoDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCategoria_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="SubCategoria">
+        <PropertyRef Name="codigoCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="codigoRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VentaArticulosCreditoModelStoreContainer">
+    <EntitySet Name="Articulo" EntityType="Self.Articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carrito" EntityType="Self.Carrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CorrelativoFactura" EntityType="Self.CorrelativoFactura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Descuento_Articulo" EntityType="Self.Descuento_Articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleFactura" EntityType="Self.DetalleFactura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Direccion_Usuario" EntityType="Self.Direccion_Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Imagen_Articulo" EntityType="Self.Imagen_Articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inventario" EntityType="Self.Inventario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCategoria" EntityType="Self.SubCategoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Articulo_SubCategoria" Association="Self.FK_Articulo_SubCategoria">
+      <End Role="SubCategoria" EntitySet="SubCategoria" />
+      <End Role="Articulo" EntitySet="Articulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carrito_Inventario" Association="Self.FK_Carrito_Inventario">
+      <End Role="Inventario" EntitySet="Inventario" />
+      <End Role="Carrito" EntitySet="Carrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carrito_Usuario" Association="Self.FK_Carrito_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Carrito" EntitySet="Carrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Descuento_Articulo_Inventario" Association="Self.FK_Descuento_Articulo_Inventario">
+      <End Role="Inventario" EntitySet="Inventario" />
+      <End Role="Descuento_Articulo" EntitySet="Descuento_Articulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleFactura_Articulo" Association="Self.FK_DetalleFactura_Articulo">
+      <End Role="Articulo" EntitySet="Articulo" />
+      <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleFactura_Factura" Association="Self.FK_DetalleFactura_Factura">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Usuario_Municipio" Association="Self.FK_Direccion_Usuario_Municipio">
+      <End Role="Municipio" EntitySet="Municipio" />
+      <End Role="Direccion_Usuario" EntitySet="Direccion_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Usuario_Usuario" Association="Self.FK_Direccion_Usuario_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Direccion_Usuario" EntitySet="Direccion_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Direccion_Usuario" Association="Self.FK_Factura_Direccion_Usuario">
+      <End Role="Direccion_Usuario" EntitySet="Direccion_Usuario" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Imagen_Articulo_Articulo" Association="Self.FK_Imagen_Articulo_Articulo">
+      <End Role="Articulo" EntitySet="Articulo" />
+      <End Role="Imagen_Articulo" EntitySet="Imagen_Articulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inventario_Articulo" Association="Self.FK_Inventario_Articulo">
+      <End Role="Articulo" EntitySet="Articulo" />
+      <End Role="Inventario" EntitySet="Inventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Municipio_Departamento" Association="Self.FK_Municipio_Departamento">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCategoria_Categoria" Association="Self.FK_SubCategoria_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="SubCategoria" EntitySet="SubCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

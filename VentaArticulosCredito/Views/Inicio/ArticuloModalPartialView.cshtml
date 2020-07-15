@@ -1,0 +1,77 @@
+﻿@model VentaArticulosCredito.DBEntities.Inventario
+
+<!-- Título-->
+<div class="header">@Model.Articulo.nombre</div>
+<!-- Contenido -->
+<div class="content">
+    <div class="ui two column stackable grid container">
+        <!-- Contenedor de las fotos -->
+        <div class="column">
+            <div class="ui segment fotos articulo">
+                <div class="glide">
+                    <div class="glide__track" data-glide-el="track">
+                        <div class="glide__slides">
+                            @foreach (var im in Model.Articulo.Imagen_Articulo)
+                            {
+                                <img class="glide__slide" src="~/Content/Images/@im.imagen" />
+                            }
+                        </div>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" id="left-arrow-slide" data-glide-dir="<"><i class="arrow alternate angle left icon"></i></button>
+                        <button class="glide__arrow glide__arrow--right" id="right-arrow-slide" data-glide-dir=">"><i class="arrow alternate angle right icon"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contenido de la descripción del artículo -->
+        <div class="column">
+            <div class="ui scrolling segment descripcion articulo">
+                <h4 class="ui header centered">Descripción</h4>
+                <div class="ui middle aligned animated list">
+                    <div class="item">
+                        <i class="caret right icon"></i>
+                        <div class="content">
+                            GTQ @Model.precioVenta
+                        </div>
+                    </div>
+                    @foreach (var it in Model.Articulo.descripcion.Split('-'))
+                    {
+                        if(!it.Equals(""))
+                        {
+                            <div class="item">
+                                <i class="caret right icon"></i>
+                                <div class="content">
+                                    @it
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="item">
+                        <i class="caret right icon"></i>
+                        <div class="content">
+                            @Model.cantidad unidades disponibles
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <div class="ui input cantidad input">
+                        <input type="number" max="@Model.cantidad" min="1" id="txt_cantidad" placeholder="Cantidad">
+                    </div>
+                    <input type="hidden" id="inventario-para-carrito" value="@Model.correlativo"/>
+                </p>
+                <p>
+                    <div class="fluid ui animated fade orange button" id="btnAgregarACarrito">
+                        <div class="visible content"><i class="shopping cart icon"></i></div>
+                        <div class="hidden content">
+                            Agregar al carrito
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

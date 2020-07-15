@@ -1,0 +1,181 @@
+﻿@model VentaArticulosCredito.Models.Articulo.ArticulosPageModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="ui container">
+    <div class="ui segment contenedor articulos admin">
+        <!-- Encabezado -->
+        <h2 class="ui centered header">Articulos</h2>
+        <!-- Botón agregar artículo -->
+        <p>
+            <div class="fluid ui animated fade orange button" id="boton-agregar-articulo">
+                <div class="visible content"><i class="plus icon"></i></div>
+                <div class="hidden content">
+                    Crear artículo
+                </div>
+            </div>
+        </p>
+        <!-- Tabla ordenes -->
+        <table class="ui selectable celled center aligned table" id="tabla-articulos-admin">
+            <thead>
+                <tr>
+                    <th># Artículo</th>
+                    <th>Imagen</th>
+                    <th>Nombre Articulo</th>
+                    <th>Descripción</th>
+                    <th>Categoria</th>
+                    <th>Sub Categoria</th>
+                    @*<th>Editar</th>*@
+                    <th>Agregar Stock</th>
+                    @*<th>Ver Stok</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model.articulos)
+                {
+                    <tr class="fila articulo admin">
+                        <td>@a.codigo</td>
+                        <td><img class="ui tiny image" src="~/Content/Images/@a.Imagen_Articulo.FirstOrDefault().imagen" /></td>
+                        <td>@a.nombre</td>
+                        <td>
+                            <div class="ui accordion">
+                                <div class="title active">
+                                    <i class="dropdown icon"></i>
+                                    <i class="list icon"></i>
+                                </div>
+                                <div class="content active">
+                                    @foreach (var des in a.descripcion.Split('-'))
+                                    {
+                                        if (!des.Equals(""))
+                                        {
+                                            <p class="transition visible" style="display: block !important;">@des</p>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </td>
+                        <td>@a.SubCategoria.Categoria.nombre</td>
+                        <td>@a.SubCategoria.nombre</td>
+                        @*<td>
+                            <div class="ui animated fade olive button boton editar articulo admin" data-articulo="@a.codigo">
+                                <div class="visible content"><i class="pencil icon"></i></div>
+                                <div class="hidden content">
+                                    Editar
+                                </div>
+                            </div>
+                        </td>*@
+                        <td>
+                            <div class="ui animated fade blue button boton agregar stock articulo admin" data-nombre-articulo="@a.nombre" data-articulo="@a.codigo">
+                                <div class="visible content"><i class="list icon"></i></div>
+                                <div class="hidden content">
+                                    Agregar
+                                </div>
+                            </div>
+                        </td>
+                        @*<td>
+                            <div class="ui animated fade yellow button boton agregar ver articulo admin" data-nombre-articulo="@a.nombre" data-articulo="@a.codigo">
+                                <div class="visible content"><i class="eye icon"></i></div>
+                                <div class="hidden content">
+                                    Ver
+                                </div>
+                            </div>
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Ventana modal para agregar stock -->
+<div class="ui tiny modal" id="add-stock-modal">
+    <!-- Título-->
+    <div class="header">Agregar Stock - <span name="nombre-articulo-span"></span></div>
+    <!-- Contenido -->
+    <div class="content">
+        @using (Html.BeginForm("AddStock", "Articulos", FormMethod.Post, new { @ID = "add-stock-form", @NAME = "add-stock-form", @CLASS = "ui large form" }))
+        {
+            <div class="ui stacked segment">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="articulo" />
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="money icon"></i>
+                        @Html.EditorFor(m => m.stockModel.precioCompra, new { htmlAttributes = new { @NAME = "precioCompra", @PLACEHOLDER = "Precio de compra" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="money icon"></i>
+                        @Html.EditorFor(m => m.stockModel.precioVenta, new { htmlAttributes = new { @NAME = "precioVenta", @PLACEHOLDER = "Precio de venta" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="list icon"></i>
+                        @Html.EditorFor(m => m.stockModel.cantidad, new { htmlAttributes = new { @NAME = "cantidad", @PLACEHOLDER = "Cantidad" } })
+                    </div>
+                </div>
+                <div class="ui calendar field" id="calendario-add-stock">
+                    <div class="ui left icon input">
+                        <i class="calendar alternate icon"></i>
+                        @Html.EditorFor(m => m.stockModel.fecha, new { htmlAttributes = new { @NAME = "fecha", @PLACEHOLDER = "Fecha de compra" } })
+                    </div>
+                </div>
+                <button class="fluid ui animated fade large orange submit button boton add stock">
+                    <div class="visible content"><i class="check icon"></i></div>
+                    <div class="hidden content">
+                        Agregar
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Ventana modal para crear artículo -->
+<div class="ui tiny modal" id="add-article-modal">
+    <!-- Título-->
+    <div class="header">Crar Artículo</div>
+    <!-- Contenido -->
+    <div class="content">
+        @using (Html.BeginForm("CreateArticle", "Articulos", null,  FormMethod.Post, new { @ID = "create-article-form", @NAME = "create-article-form", @CLASS = "ui large form", @ENCTYPE = "multipart/form-data" }))
+        {
+            <div class="ui stacked segment">
+                @Html.AntiForgeryToken()
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="list icon"></i>
+                        @Html.EditorFor(m => m.createModel.nombre, new { htmlAttributes = new { @NAME = "nombre", @PLACEHOLDER = "Nombre" } })
+                    </div>
+                </div>
+                <div class="field">
+                    <textarea placeholder="Descripción" name="descripcion"></textarea>
+                </div>
+                <div class="field">
+                     @Html.DropDownListFor(m => m.createModel.categoria, new SelectList(ViewBag.ListaCategorias, "codigo", "nombre"), "Categoria", new { @CLASS = "ui search dropdown", @NAME = "categoria", @ID = "lista-categorias" })
+                </div>
+                <div class="field">
+                    <select class="ui search dropdown" id="lista-sub-categorias" name="subCategoria">
+
+                    </select>
+                </div>
+                <div class="field">
+                    <div class="ui action input">
+                        <input type="text" placeholder="Imágenes" readonly>
+                        <input type="file" accept="image/*" name="imagenes" multiple>
+                        <div class="ui icon button">
+                            <i class="file icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <button class="fluid ui animated fade large orange submit button boton crear articulo">
+                    <div class="visible content"><i class="check icon"></i></div>
+                    <div class="hidden content">
+                        Crear
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,102 @@
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\ApplicationInsights.config
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\VentaArticulosCredito.dll.config
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\VentaArticulosCredito.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\VentaArticulosCredito.pdb
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Antlr3.Runtime.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.Web.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.WindowsServer.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.ApplicationInsights.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.Web.Infrastructure.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Newtonsoft.Json.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Helpers.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Mvc.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Optimization.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Razor.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Deployment.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Razor.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\WebGrease.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Helpers.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Mvc.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Optimization.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Razor.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Deployment.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Razor.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Antlr3.Runtime.pdb
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Newtonsoft.Json.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.ApplicationInsights.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.WindowsServer.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.Web.xml
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Helpers.resources.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Mvc.resources.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Optimization.resources.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Razor.resources.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.WebPages.resources.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.WebPages.Deployment.resources.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.WebPages.Razor.resources.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.csprojResolveAssemblyReference.cache
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.csproj.CoreCompileInputs.cache
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.dll
+c:\users\acabrera\source\repos\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.pdb
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\ApplicationInsights.config
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\VentaArticulosCredito.dll.config
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\VentaArticulosCredito.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\VentaArticulosCredito.pdb
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Antlr3.Runtime.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\EntityFramework.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\EntityFramework.SqlServer.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.Web.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.ApplicationInsights.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Newtonsoft.Json.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Helpers.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Mvc.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Optimization.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Razor.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Deployment.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Razor.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\WebGrease.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\EntityFramework.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\EntityFramework.SqlServer.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Helpers.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Mvc.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Optimization.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.Razor.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Deployment.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\System.Web.WebPages.Razor.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Antlr3.Runtime.pdb
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Newtonsoft.Json.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.ApplicationInsights.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\Microsoft.AI.Web.xml
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Helpers.resources.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Mvc.resources.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Optimization.resources.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.Razor.resources.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.WebPages.resources.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.csproj.CoreCompileInputs.cache
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.dll
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.pdb
+C:\Users\acabrera\Documents\Visual Studio 2015\Projects\VentaArticulosCredito\VentaArticulosCredito\obj\Debug\VentaArticulosCredito.csprojResolveAssemblyReference.cache

@@ -1,0 +1,40 @@
+﻿body {
+    background-color: #DADADA;
+}
+
+body > .grid {
+    height: 100%;
+}
+
+.image {
+    margin-top: -100px;
+}
+
+.column {
+    max-width: 450px;
+}
+
+.title-login {
+    color: orange;
+}
+
+#button-login {
+    background-color: orange;
+}
+
+#cancel-register-button{
+    background-color: orangered;
+}
+
+#register-container {
+    display: none;
+    padding: 0% 0% 2% 0%;
+}
+
+#show-register-form{
+    cursor: pointer;
+}
+
+#show-forgot-password{
+    cursor: pointer;
+}

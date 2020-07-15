@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Tokens>
+  <Token>
+    <correo>cybershop@yopmail.com</correo>
+    <valorToken>362c3988_4ac0_4637_a756_2e28968b3b68</valorToken>
+    <fechaEmision>29/04/2019 11:19</fechaEmision>
+    <fechaExpiracion>30/04/2019 11:19</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>cybershop@yopmail.com</correo>
+    <valorToken>a92b90cf_d600_444b_ab95_135b0d6c8f1e</valorToken>
+    <fechaEmision>29/04/2019 12:08</fechaEmision>
+    <fechaExpiracion>30/04/2019 12:08</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>cybershop@yopmail.com</correo>
+    <valorToken>6dc36c4d_9dbd_407d_99ec_157bad115000</valorToken>
+    <fechaEmision>29/04/2019 12:11</fechaEmision>
+    <fechaExpiracion>30/04/2019 12:11</fechaExpiracion>
+    <estado>0</estado>
+  </Token>
+  <Token>
+    <correo>cybershop@yopmail.com</correo>
+    <valorToken>170cfde1_9e98_45e1_8865_e008ea09c812</valorToken>
+    <fechaEmision>03/05/2019 08:33</fechaEmision>
+    <fechaExpiracion>04/05/2019 08:33</fechaExpiracion>
+    <estado>0</estado>
+  </Token>
+  <Token>
+    <correo>jonathanroque@yopmail.com</correo>
+    <valorToken>fbb07e53_6a80_49cb_b859_cf3d63f53f16</valorToken>
+    <fechaEmision>22/05/2019 08:20</fechaEmision>
+    <fechaExpiracion>23/05/2019 08:20</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>angelcabrera18398@gmail.com</correo>
+    <valorToken>4a8270e2_8ada_44dd_8e05_1c5359567a54</valorToken>
+    <fechaEmision>25/05/2019 07:35</fechaEmision>
+    <fechaExpiracion>26/05/2019 07:35</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>ervinlopezchino@yopmail.com</correo>
+    <valorToken>57adc782_0e3d_4b9b_a628_fe1d2f10001a</valorToken>
+    <fechaEmision>25/05/2019 05:29</fechaEmision>
+    <fechaExpiracion>26/05/2019 05:29</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>angelcabrera18398@gmail.com</correo>
+    <valorToken>04c0fa11_4834_462e_a8b8_f166280e5209</valorToken>
+    <fechaEmision>25/05/2019 05:31</fechaEmision>
+    <fechaExpiracion>26/05/2019 05:31</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>angelcabrera18398@gmail.com</correo>
+    <valorToken>6c3d71af_d7ec_4250_a9a9_f0dd7a7605a6</valorToken>
+    <fechaEmision>14/02/2020 11:18</fechaEmision>
+    <fechaExpiracion>15/02/2020 11:18</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>angelcabrera18398@gmail.com</correo>
+    <valorToken>eeaf99d2_1b23_4e4a_81bc_c87464d05a4f</valorToken>
+    <fechaEmision>14/02/2020 11:30</fechaEmision>
+    <fechaExpiracion>15/02/2020 11:30</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>angelcabrera18398@gmail.com</correo>
+    <valorToken>decf3bbe_e971_467c_b367_00a77a2fd579</valorToken>
+    <fechaEmision>14/02/2020 11:31</fechaEmision>
+    <fechaExpiracion>15/02/2020 11:31</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+  <Token>
+    <correo>angelcabrera18398@gmail.com</correo>
+    <valorToken>783f9eee_b076_4cc9_bd99_e2a17bfaedf6</valorToken>
+    <fechaEmision>13/07/2020 06:49</fechaEmision>
+    <fechaExpiracion>14/07/2020 06:49</fechaExpiracion>
+    <estado>1</estado>
+  </Token>
+</Tokens>

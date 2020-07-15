@@ -1,0 +1,148 @@
+﻿@model VentaArticulosCredito.Models.Compras.CompraPageModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Calculo el total de la orden  -->
+@{
+    double totalArticulos = 0.00;
+    double impuestos = 0.00;
+    double envio = 0.00;
+    double totalCarrito = 0.00;
+
+    foreach (var d in Model.factura.DetalleFactura)
+    {
+        totalArticulos += Convert.ToDouble((d.cantidad * d.precio));
+    }
+
+    impuestos = (totalArticulos * 0.12);
+
+    totalArticulos -= impuestos;
+
+    if (totalArticulos < 250.00)
+    {
+        envio = 120.00;
+    }
+
+    totalCarrito = (totalArticulos + envio + impuestos);
+}
+
+<div class="ui center aligned container">
+    <div class="ui segment contenedor orden compra">
+        <h2 class="ui centered header">Orden de compra #@Model.factura.codigo</h2>
+        <!-- Setp order -->
+        @if (Model.factura.estado == 0)
+        {
+            @Html.Partial("~/Views/Compras/StepOrder0PartialView.cshtml")
+        }
+        else if (Model.factura.estado == 1)
+        {
+            @Html.Partial("~/Views/Compras/StepOrder1PartialView.cshtml")
+        }
+        else if (Model.factura.estado == 2)
+        {
+            @Html.Partial("~/Views/Compras/StepOrder2PartialView.cshtml")
+        }
+        else if (Model.factura.estado == 3)
+        {
+            @Html.Partial("~/Views/Compras/StepOrder3PartialView.cshtml")
+        }
+        else if (Model.factura.estado == 4)
+        {
+            @Html.Partial("~/Views/Compras/StepOrder4PartialView.cshtml")
+        }
+        <div class="ui two column stackable grid container">
+            <div class="column">
+                <!-- Lista de artículos -->
+                <div class="ui middle huge aligned selection list">
+                    @foreach (var item in Model.factura.DetalleFactura)
+                    {
+                        <div class="item">
+                            <img class="ui tiny image" src="~/Content/Images/@item.Articulo.Imagen_Articulo.FirstOrDefault().imagen">
+                            <div class="content">
+                                <div class="header">@item.Articulo.nombre</div>
+                                <div>
+                                    GTQ @item.precio (IVA incluido)
+                                </div>
+                                @if (item.cantidad == 1)
+                                {
+                                    <div>
+                                        @item.cantidad  unidad
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        @item.cantidad  unidades
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="column">
+                <!-- Fecha de compra -->
+                <h3 class="ui centered header">Fecha de orden</h3>
+                <div class="centered">@Convert.ToDateTime(Model.factura.fecha).ToString("dd/MM/yyyy")</div>
+                <!-- Dirección entrega -->
+                <h3 class="ui centered header">Dirección de entrega</h3>
+                <div class="ui raised centered link card">
+                    <div class="scrolling content">
+                        <div class="ui list">
+                            <div class="header"><strong>@Model.factura.Direccion_Usuario.nombre @Model.factura.Direccion_Usuario.apellido</strong></div>
+                            <div class="ui divider"></div>
+                            <div class="item">@Model.factura.Direccion_Usuario.direccion</div>
+                            <div class="item">@Model.factura.Direccion_Usuario.Municipio.nombre, @Model.factura.Direccion_Usuario.Municipio.Departamento.nombre</div>
+                            <div class="item">@Model.factura.Direccion_Usuario.telefono</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Descripción orden -->
+                <h3 class="ui centered header">Desgloce Orden</h3>
+                <table class="ui very basic table tabla checkout carrito">
+                    <tbody>
+                        <tr>
+                            <td>Articulos</td>
+                            <td>GTQ @totalArticulos</td>
+                        </tr>
+                        <tr>
+                            <td>Impuestos</td>
+                            <td>GTQ @impuestos</td>
+                        </tr>
+                        <tr>
+                            <td>Envío</td>
+                            <td>GTQ @envio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>GTQ @totalCarrito</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Mensaje o botón -->
+                @if (Model.factura.estado < 2)
+                {
+                    <div class="fluid ui animated fade orange button" id="btn-cancelar-orden" data-orden="@Model.factura.codigo">
+                        <div class="visible content"><i class="ban icon"></i></div>
+                        <div class="hidden content">
+                            Cancelar orden
+                        </div>
+                    </div>
+                }
+                else if (Model.factura.estado == 4)
+                {
+                    <div class="ui red icon message">
+                        <i class="ban icon"></i>
+                        <div class="content">
+                            <div class="header">
+                                Orden cancelada
+                            </div>
+                            <p>Se ha cancelado la entrega de esta orden</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

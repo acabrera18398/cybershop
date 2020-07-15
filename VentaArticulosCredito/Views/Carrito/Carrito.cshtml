@@ -1,0 +1,175 @@
+﻿@model VentaArticulosCredito.Models.Carrito.CarritoPageModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Calculo el total del carrito -->
+@{
+    double totalArticulos = 0.00;
+    double impuestos = 0.00;
+    double envio = 0.00;
+    double totalCarrito = 0.00;
+
+    foreach (var c in Model.carrito)
+    {
+        totalArticulos += Convert.ToDouble((c.cantidad * c.Inventario.precioVenta));
+    }
+
+    impuestos = (totalArticulos * 0.12);
+
+    totalArticulos -= impuestos;
+
+    if (totalArticulos < 250.00)
+    {
+        envio = 120.00;
+    }
+
+    totalCarrito = (totalArticulos + envio + impuestos);
+}
+
+@if (Model.carrito.Count > 0)
+{
+    <div class="ui two column stackable grid container">
+        <!-- Articulos del carrito -->
+        <div class="column">
+            <div class="ui segment">
+                <div class="ui middle huge aligned selection list">
+                    @foreach (var car in Model.carrito)
+                    {
+                        <div class="item">
+                            <img class="ui tiny image" src="~/Content/Images/@car.Inventario.Articulo.Imagen_Articulo.FirstOrDefault().imagen">
+                            <div class="content">
+                                <div class="header">@car.Inventario.Articulo.nombre</div>
+                                <div>
+                                    GTQ @car.Inventario.precioVenta (IVA incluido)
+                                </div>
+                                @if (car.cantidad == 1)
+                                {
+                                    <div>
+                                        @car.cantidad unidad
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        @car.cantidad unidades
+                                    </div>
+                                }
+                            </div>
+                            <div class="right floated content container eliminar articulo carrito">
+                                <div class="ui animated fade red button boton eliminar articulo carrito" data-inventario="@car.correlativo">
+                                    <div class="visible content"><i class="trash icon"></i></div>
+                                    <div class="hidden content">
+                                        Eliminar
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- Checkout -->
+        <div class="column">
+            <div class="ui segment">
+                <h3 class="ui centered header">Desgloce Carrito</h3>
+                <table class="ui very basic table tabla checkout carrito">
+                    <tbody>
+                        <tr>
+                            <td>Articulos</td>
+                            <td>GTQ @totalArticulos</td>
+                        </tr>
+                        <tr>
+                            <td>Impuestos</td>
+                            <td>GTQ @impuestos</td>
+                        </tr>
+                        <tr>
+                            <td>Envío</td>
+                            <td>GTQ @envio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>GTQ @totalCarrito</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="fluid ui animated fade olive button" id="btn-ordenar-compra">
+                    <div class="visible content"><i class="truck icon"></i></div>
+                    <div class="hidden content">
+                        Ordenar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <!-- Mensaje no hay artículos -->
+    <div class="ui container">
+        <div class="ui segments">
+            <div class="ui segment icon message">
+                <i class="exclamation circle icon"></i>
+                <div class="content">
+                    <div class="header">
+                        0 Artículos
+                    </div>
+                    <p>Agregue artículos a su carrito para poder realizar compras.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Ventana modal para confirmar la orden -->
+<div class="ui small modal" id="confirm-order-modal">
+    <!-- Título-->
+    <div class="header">Confirmar Orden</div>
+    <!-- Contenido -->
+    <div class="scrolling content">
+        <!-- Lista de direcciones -->
+        <div class="ui two column stackable grid container">
+            @if (Model.direcciones.Count > 0)
+            {
+                foreach (var dir in Model.direcciones)
+                {
+                    <div class="column">    
+                        <div class="ui raised centered link card tarjeta direccion" data-direccion="@dir.codigo">
+                            <div class="scrolling content">
+                                <div class="ui list">
+                                    <div class="header"><strong>@dir.nombre @dir.apellido</strong></div>
+                                    <div class="ui divider"></div>
+                                    <div class="item">@dir.direccion</div>
+                                    <div class="item">@dir.Municipio.nombre, @dir.Municipio.Departamento.nombre</div>
+                                    <div class="item">@dir.telefono</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="fluid ui animated fade olive button" id="btn-confirmar-orden-compra">
+                    <div class="visible content"><i class="check circle icon"></i></div>
+                    <div class="hidden content">
+                        Confirmar
+                    </div>
+                </div>
+            }
+            else {
+                <div class="ui segment icon message">
+                    <i class="exclamation circle icon"></i>
+                    <div class="content">
+                        <div class="header">
+                            0 Direcciones
+                        </div>
+                        <p>Agregue al menos una dirección para poder comprar.</p>
+                    </div>
+                </div>
+                <div class="fluid ui animated fade orange button" id="btn-redirigir-agregar-direccion">
+                    <div class="visible content"><i class="plus icon"></i></div>
+                    <div class="hidden content">
+                        Agregar Dirección
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
